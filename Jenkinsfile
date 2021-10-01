@@ -4,9 +4,9 @@ node('linux'){
 
     cleanWs()
 
-     stage ('Checkout Code') {
-         git url: 'https://github.com/gopinath45/sample-app-java-SP.git'
-     }
+    stage ('checkout') {
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/gopinath45/sample-app-java-SP.git']]])      
+        }
   
      stage ('Code Quality scan')  {
        withSonarQubeEnv('Sonarqube') {
