@@ -1,6 +1,8 @@
 node('linux'){
 
     def mvnHome = tool 'MAVEN3'
+
+    cleanWs()
   
      stage ('Code Quality scan')  {
        withSonarQubeEnv('Sonarqube') {
