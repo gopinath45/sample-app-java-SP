@@ -3,6 +3,10 @@ node('linux'){
     def mvnHome = tool 'MAVEN3'
 
     cleanWs()
+
+     stage ('Checkout Code') {
+         git url: 'https://github.com/gopinath45/sample-app-java-SP.git'
+     }
   
      stage ('Code Quality scan')  {
        withSonarQubeEnv('Sonarqube') {
