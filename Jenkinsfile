@@ -12,11 +12,11 @@ node('linux'){
         stage ('Build')  {
         sh "${mvnHome}/bin/mvn -f pom.xml clean install"
         }
-        finally{
-            jacoco()
-        }
     }
-  
+    finally{
+            jacoco()
+    }
+    
      stage ('Code Quality scan')  {
        withSonarQubeEnv('Sonarqube') {
         sh "${mvnHome}/bin/mvn -f pom.xml sonar:sonar"
